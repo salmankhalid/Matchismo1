@@ -1,6 +1,6 @@
 //
 //  CardGameViewController.m
-//  Matchismo1
+//  Matchismo
 //
 //  Created by Salman Khalid on 11/08/2013.
 //  Copyright (c) 2013 Salman Khalid. All rights reserved.
@@ -10,20 +10,38 @@
 
 @interface CardGameViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
+
 @end
 
 @implementation CardGameViewController
 
-- (void)viewDidLoad
+- (void) setFlipCount:(int)flipCount
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    _flipCount=flipCount;
+    self.flipsLabel.text= [NSString stringWithFormat:@"Flips: %d",self.flipCount];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// IBACTION is equivalent to void.
+- (IBAction)flipCard:(UIButton *)sender {
+    
+    /**
+     * Easy way!
+     **/
+//    if (!sender.isSelected) {
+//        sender.selected=YES;
+//    }
+//    else
+//    {
+//        sender.selected=NO;
+//    }
+//
+    
+    // one line code
+    sender.selected=!sender.isSelected;
+    self.flipCount++;
 }
+
 
 @end
