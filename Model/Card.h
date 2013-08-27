@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface Card : NSObject
-// hello initial git commit.
+
+@property (strong,nonatomic) NSString *contents;
+
+@property (nonatomic,getter = isFaceUp) BOOL faceUp;
+@property (nonatomic,getter = isUnplayabale) BOOL unPlayable;
+
+-(int) match:(NSArray *) otherCards;
+
 @end
