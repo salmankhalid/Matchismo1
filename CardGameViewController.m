@@ -7,9 +7,14 @@
 //
 
 #import "CardGameViewController.h"
+#import "Deck.h"
+#import "PlayingCardDeck.h"
+#import "Card.h"
 
 @interface CardGameViewController ()
 
+// weak means: doesn't necessary to be in the heap, if no pointer
+// is pointing to it. or any other object using it.
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 
@@ -40,8 +45,29 @@
     
     // one line code
     sender.selected=!sender.isSelected;
-    self.flipCount++;
+    // incrementing flip count
+     self.flipCount++;
+    
+    // initialising the deck by calling init of PlayingCard Deck.
+    // that will build those 52 cards.
+    Deck *myDeck = [[PlayingCardDeck alloc] init];
+    // from the card deck calling the draw random method.
+    // which will pick a specific card from the deck.
+    Card *card=myDeck.drawRandomCard;
+    
+    // applying the card contents to the title of the button when
+    // button state is selected
+    // or you can apply it can button state is disabled.
+    
+    [sender setTitle:card.contents forState:UIControlStateSelected];
+    
+   
 }
 
 
+/*
+- (void)flipCard:(NSString *)title forState:(UIControlState)state
+{
+    
+}*/
 @end
